@@ -17,8 +17,8 @@ dotenv.config();
 
 const app = express(); // Initialize express app here
 
-// app.use(cors({ origin: `https://demo-lead-front.vercel.app`, credentials: true })); // Now you can use cors middleware after initializing app
-app.use(cors({ origin: `http://localhost:3000`, credentials: true })); // Now you can use cors middleware after initializing app
+app.use(cors({ origin: `https://demo-lead-front.vercel.app`, credentials: true })); // Now you can use cors middleware after initializing app
+// app.use(cors({ origin: `http://localhost:3000`, credentials: true })); // Now you can use cors middleware after initializing app
 
 connectDB();
 
