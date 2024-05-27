@@ -1,5 +1,6 @@
 const LeadData = require("../model/LeadData");
 const csv = require("csvtojson");
+const fs = require('fs');
 
 const importUser = async (req, res) => {
     try {
@@ -25,6 +26,13 @@ const importUser = async (req, res) => {
 
         await LeadData.insertMany(userData);
 
+        // Optionally remove the file after processing
+        fs.unlink(filePath, (err) => {
+            if (err) {
+                console.error('Failed to delete file:', err);
+            }
+        });
+
         res.json({ status: 200, success: true, message: "Data imported successfully" });
     } catch (error) {
         res.json({ status: 400, success: false, message: error.message });
@@ -42,5 +50,5 @@ const deleteAllLeadData = async (req, res) => {
 
 module.exports = {
     importUser,
-    deleteAllLeadData // Export the new method
+    deleteAllLeadData
 };
