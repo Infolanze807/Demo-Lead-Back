@@ -15,6 +15,9 @@ router.get('/remotelead', remoteleadController.getAllRemoteLeads);
 // DELETE /remotelead/:id - Delete a remote lead by ID
 router.delete('/remote/:id',adminAuth, remoteleadController.deleteRemoteLeadById);
 
+// DELETE /leads/multiple - Delete multiple leads by IDs
+router.delete('/multiple', remoteleadController.deleteMultipleLeads);
+
 router.put('/remote/:id',adminAuth, remoteleadController.updateRemoteLead);
 
 // GET /remotelead/tag - Fetch remote leads by tag

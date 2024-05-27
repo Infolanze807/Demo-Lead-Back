@@ -1,5 +1,4 @@
 const LeadData = require("../model/LeadData");
-const RemoteLeadData = require("../model/RemoteLeadData");
 const mongoose = require('mongoose');
 
 
