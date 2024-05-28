@@ -5,7 +5,8 @@ const cors = require("cors");
 const bcrypt = require("bcrypt");
 const routes = require("./Auth/route");
 const leadRoute = require("./routes/leadRoute");
-const csvRoute = require("./routes/csvRoute");
+const leadsCsvRoute = require("./routes/leadsCsvRoute");
+const remoteLeadsCsvRoute = require("./routes/remoteLeadsCsvRoute")
 const remoteLeadRoute = require("./routes/remoteLeadRoute");
 const passwordReset = require("./Auth/passwordReset");
 const { adminAuth, userAuth } = require("./middleware/auth");
@@ -17,8 +18,8 @@ dotenv.config();
 
 const app = express(); // Initialize express app here
 
-app.use(cors({ origin: `https://demo-lead-front.vercel.app`, credentials: true })); // Now you can use cors middleware after initializing app
-// app.use(cors({ origin: `http://localhost:3000`, credentials: true })); // Now you can use cors middleware after initializing app
+// app.use(cors({ origin: `https://demo-lead-front.vercel.app`, credentials: true })); // Now you can use cors middleware after initializing app
+app.use(cors({ origin: `http://localhost:3000`, credentials: true })); // Now you can use cors middleware after initializing app
 
 connectDB();
 
@@ -48,7 +49,10 @@ app.use("/api/passwordReset", passwordReset);
 app.use("/api/phonepe", phonepeRoute);
 
 // CSV upload route
-app.use("/api/csv", csvRoute);
+app.use("/api/csv", leadsCsvRoute);
+
+// Remote CSV upload route
+app.use("/api/Remotecsv", remoteLeadsCsvRoute);
 
 // Adding admin and basic routes with their respective middleware
 app.get("/api/admin", adminAuth, (req, res) => res.send("Admin Route"));

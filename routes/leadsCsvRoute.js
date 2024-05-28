@@ -78,7 +78,7 @@ const path = require('path');
 const router = express.Router();
 const { adminAuth } = require("../middleware/auth");
 
-const databaseController = require("../controllers/databaseController");
+const leadsdatabaseController = require("../controllers/leadsdatabaseController");
 
 // Multer setup for file uploads
 const storage = multer.diskStorage({
@@ -93,10 +93,10 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // CSV upload route
-router.post('/importUser', adminAuth, upload.single('file'), databaseController.importUser);
+router.post('/importUser', adminAuth, upload.single('file'), leadsdatabaseController.importUser);
 
 // Route to delete all lead data
-router.delete('/deleteAllLeadData', adminAuth, databaseController.deleteAllLeadData);
+router.delete('/deleteAllLeadData', adminAuth, leadsdatabaseController.deleteAllLeadData);
 
 module.exports = router;
 

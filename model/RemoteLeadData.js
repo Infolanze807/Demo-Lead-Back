@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const RemoteleadDataSchema = new Schema({
     Title: { type: String, required: true },
     Description: { type: String, required: true },
-    Level: { type: String, required: true },
+    Level: { type: String},
     Job_Type: { type: String, required: true },
     Tags: { type: Schema.Types.Mixed, required: true },
     Duration: String,

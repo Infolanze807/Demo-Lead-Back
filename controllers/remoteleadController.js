@@ -6,7 +6,7 @@ exports.createRemoteLead = async (req, res) => {
     try {
         const remoteleadData = new RemoteLeadData(req.body);
         const savedData = await remoteleadData.save(); // Corrected variable name
-        res.status(201).json(savedData);
+        res.status(200).json({savedData, message: 'Data submitted successfully!'});
     } catch (err) {
         res.status(400).json({ message: err.message });
     }
